@@ -21,15 +21,19 @@ describe('Player', function() {
 
   describe('when in bonus mode', function() {
 
-    it('score increases by double', function() {
-      player.startBonusStreak();
-      player.receiveScore(5);
+    it('score can increase by double once', function() {
+      var streakCount = 1;
+      player.startBonusStreak(streakCount);
 
-      expect(player.score).toEqual(10);
+      player.receiveScore(5);
+      player.receiveScore(7);
+
+      expect(player.score).toEqual(17);
     });
 
-    it('score increases by double twice', function() {
-      player.startBonusStreak();
+    it('score can increase by double twice', function() {
+      var streakCount = 2;
+      player.startBonusStreak(streakCount);
 
       player.receiveScore(5);
       player.receiveScore(7);

@@ -18,6 +18,6 @@ Player.prototype.increaseScore = function(points) {
   this.score += points;
 };
 
-Player.prototype.startBonusStreak = function() {
-  this.bonusStreak = 2;
+Player.prototype.startBonusStreak = function(streakCount) {
+  this.bonusStreak = streakCount;
 };
