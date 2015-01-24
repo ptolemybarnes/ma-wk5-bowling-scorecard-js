@@ -7,21 +7,21 @@ describe('Frame', function() {
 
     it('is not over after 1 roll', function() {
       var score = 3;
-      frame.roll(score);
+      frame.knockDown(score);
 
       expect(frame.isFrameOver()).toBe(false);
     });
 
     it('is over after two rolls', function() {
       var score = 3;
-      frame.roll(score);
-      frame.roll(score);
+      frame.knockDown(score);
+      frame.knockDown(score);
 
       expect(frame.isFrameOver()).toBe(true);
     });
 
     it('is over if strike is scored', function() {
-      frame.roll(10);
+      frame.knockDown(10);
 
       expect(frame.isFrameOver()).toBe(true);
     });
@@ -47,7 +47,7 @@ describe('Frame', function() {
       var player = new PlayerDouble();
       spyOn(player, 'startBonusStreak');
 
-      frame.roll(10);
+      frame.knockDown(10);
       frame.endFrame(player);
 
       expect(player.startBonusStreak).toHaveBeenCalledWith(2);
@@ -59,25 +59,25 @@ describe('Frame', function() {
       var player = new PlayerDouble();
       spyOn(player, 'startBonusStreak');
 
-      frame.roll(5);
-      frame.roll(5);
+      frame.knockDown(5);
+      frame.knockDown(5);
       frame.endFrame(player);
 
       expect(player.startBonusStreak).toHaveBeenCalledWith(1);
     });
   });
 
-  it('records the score of each roll', function() {
-    frame.roll(5);
-    frame.roll(3);
+  it('records the score of each knockDown', function() {
+    frame.knockDown(5);
+    frame.knockDown(3);
 
     expect(frame.scoreRecord).toEqual([5,3])
   });
 
-  it('throws error if there is a roll when frame is over', function() {
-    frame.roll(5);
-    frame.roll(3);
+  it('throws error if there is a knockDown when frame is over', function() {
+    frame.knockDown(5);
+    frame.knockDown(3);
 
-    expect( function(){ frame.roll(2) }).toThrowError('The frame is over! No more rolls.')
+    expect( function(){ frame.knockDown(2) }).toThrowError('The frame is over! No more rolls.')
   });
 });

@@ -8,7 +8,7 @@ var Frame = function(rollCount) {
   this.pinsCount   = 10;
 };
 
-Frame.prototype.roll = function(score) {
+Frame.prototype.knockDown = function(score) {
   if (this.isFrameOver() ) { throw Error('The frame is over! No more rolls.') };
   this.scoreRecord.push(score);
   this.rollCount -= 1;
@@ -22,7 +22,7 @@ Frame.prototype.isFrameOver = function() {
     return true }
 };
 
-Frame.prototype.sendScoreToPlayer = function(player) {
+Frame.prototype.sendScoreToPlayer = function(player, score) {
   player.receiveScore();
 };
 
