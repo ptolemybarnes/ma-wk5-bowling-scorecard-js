@@ -15,4 +15,15 @@ describe('Frame', function() {
 
     expect(frame.isFrameOver()).toBe(true);
   });
+
+  it('sends the score to player', function() {
+    var PlayerDouble = function(){}; 
+    PlayerDouble.prototype.receiveScore = function(score){};
+    var player = new PlayerDouble();
+
+    spyOn(player, 'receiveScore');
+    frame.sendScoreToPlayer(player);
+
+    expect(player.receiveScore).toHaveBeenCalled();
+  });
 });

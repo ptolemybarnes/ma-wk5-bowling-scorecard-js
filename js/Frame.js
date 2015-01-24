@@ -16,3 +16,7 @@ Frame.prototype.isFrameOver = function() {
   else {
     return true }
 };
+
+Frame.prototype.sendScoreToPlayer = function(player) {
+  player.receiveScore();
+};
