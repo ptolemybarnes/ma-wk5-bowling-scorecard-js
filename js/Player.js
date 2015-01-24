@@ -1,3 +1,6 @@
+// player class is responsible for keeping track of its score and also whether it's in 'bonus mode'
+// in bonus mode, the player's scores are multiplied.
+
 var Player = function() {
   this.score       = 0;
   this.bonusStreak = 0; // tracks remaining rounds wherein player can score bonus points.
