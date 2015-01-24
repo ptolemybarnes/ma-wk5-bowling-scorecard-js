@@ -2,13 +2,14 @@
 // of pins knocked down to the player object and engaging the player's bonusStreak mode if
 // she scores a strike.
 
-var Frame = function(pins) {
-  this.rollCount   = 2;
+var Frame = function(rollCount) {
+  this.rollCount   = rollCount || 2;
   this.scoreRecord = [];
-  this.pinsCount   = pins || 10;
+  this.pinsCount   = 10;
 };
 
 Frame.prototype.roll = function(score) {
+  if (this.isFrameOver() ) { throw Error('The frame is over! No more rolls.') };
   this.scoreRecord.push(score);
   this.rollCount -= 1;
   this.pinsCount -= score;

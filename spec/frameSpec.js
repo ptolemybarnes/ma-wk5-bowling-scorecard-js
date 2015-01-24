@@ -73,4 +73,11 @@ describe('Frame', function() {
 
     expect(frame.scoreRecord).toEqual([5,3])
   });
+
+  it('throws error if there is a roll when frame is over', function() {
+    frame.roll(5);
+    frame.roll(3);
+
+    expect( function(){ frame.roll(2) }).toThrowError('The frame is over! No more rolls.')
+  });
 });
