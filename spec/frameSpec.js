@@ -4,14 +4,22 @@ describe('Frame', function() {
   beforeEach(function() { frame = new Frame() });
 
   it('knows frame is not over after 1 roll', function() {
-    frame.roll();
+    var score = 3;
+    frame.roll(score);
 
     expect(frame.isFrameOver()).toBe(false);
   });
 
   it('knows frame is over after two rolls', function() {
-    frame.roll();
-    frame.roll();
+    var score = 3;
+    frame.roll(score);
+    frame.roll(score);
+
+    expect(frame.isFrameOver()).toBe(true);
+  });
+
+  it('knows frame is over if strike is scored', function() {
+    frame.roll(10);
 
     expect(frame.isFrameOver()).toBe(true);
   });
@@ -20,10 +28,17 @@ describe('Frame', function() {
     var PlayerDouble = function(){}; 
     PlayerDouble.prototype.receiveScore = function(score){};
     var player = new PlayerDouble();
-
     spyOn(player, 'receiveScore');
+
     frame.sendScoreToPlayer(player);
 
     expect(player.receiveScore).toHaveBeenCalled();
+  });
+
+  it('records the score of each roll', function() {
+    frame.roll(5);
+    frame.roll(3);
+
+    expect(frame.scoreRecord).toEqual([5,3])
   });
 });
