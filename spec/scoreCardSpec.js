@@ -3,13 +3,12 @@ describe('Scorecard', function() {
   var player;
 
   beforeEach(function() {
-    player    = {};
-    scorecard = new Scorecard(player);
+    scorecard = new Scorecard(10);
   });
 
   describe('knows', function() {
 
-    it('the game is over after 10 frames', function() {
+    it('the game is over after the number of frames given', function() {
       for (var i = 0; i < 10; i++) {
         scorecard.receiveFrameScore([3,3]);
       }

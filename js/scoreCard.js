@@ -1,4 +1,4 @@
-var Scorecard = function() {
+var Scorecard = function(gameLength) {
   this.frameScoreRecord = [];
 };
 
