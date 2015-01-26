@@ -10,24 +10,10 @@ FrameOutcome.prototype.sendScoreToPlayer = function(player) {
 };
 
 FrameOutcome.prototype.bonusOutcome = function(player) {
-  if (this.isStrike()) { 
+  if (KNOW_FRAME_OUTCOME.isStrike(this.scoreRecord)) { 
     player.startBonusStreak(2);
   }
-  else if (this.isSpare()) {
+  else if (KNOW_FRAME_OUTCOME.isSpare(this.scoreRecord)) {
     player.startBonusStreak(1);
   }
-};
-
-FrameOutcome.prototype.isStrike = function() {
-  if (this.scoreRecord[0] === 10) {
-   return true }
-  else {
-    return false }
-};
-
-FrameOutcome.prototype.isSpare = function() {
-  if ((this.scoreRecord[0] + this.scoreRecord[1]) === 10) {
-   return true }
-  else {
-    return false }
 };
