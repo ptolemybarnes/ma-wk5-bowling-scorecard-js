@@ -12,21 +12,21 @@ TenthFrame.prototype.knockDown = function(score) {
 };
 
 TenthFrame.prototype.isFrameOver = function() {
-  if ((this.isStrike() || this.isSpare()) && this.rollCount > 0) {
+  if ((KNOW_FRAME_OUTCOME.isStrike(this.scoreRecord) || KNOW_FRAME_OUTCOME.isSpare(this.scoreRecord)) && this.rollCount > 0) {
     return false;
   };
   return true;
 };
 
-TenthFrame.prototype.isStrike = function() {
-  if (this.scoreRecord[0] === 10) {
+TenthFrame.prototype.isStrike = function(scoreRecord) {
+  if (scoreRecord[0] === 10) {
    return true }
   else {
     return false }
 };
 
-TenthFrame.prototype.isSpare = function() {
-  if ((this.scoreRecord[0] + this.scoreRecord[1]) === 10) {
+TenthFrame.prototype.isSpare = function(scoreRecord) {
+  if ((scoreRecord[0] + scoreRecord[1]) === 10) {
    return true }
   else {
     return false }
