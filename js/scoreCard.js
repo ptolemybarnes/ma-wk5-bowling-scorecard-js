@@ -1,15 +1,13 @@
-// describe('Scorecard', function() {
-//   var scorecard;
-//   var player;
+var Scorecard = function() {
+  this.frameScoreRecord = [];
+};
 
-//   beforeEach(function() {
-//     player    = {
-//     }
-//     scorecard = new Scorecard(player)
-//   });
+Scorecard.prototype.receiveFrameScore = function(score) {
+  this.frameScoreRecord.push(score);
+};
 
-//   describe('', function() {
-
-
-//   });
-// });
+Scorecard.prototype.isGameOver = function() {
+  console.log(this.frameScoreRecord);
+  if (this.frameScoreRecord.length == 10) { return true };
+  return false;
+};
