@@ -12,22 +12,8 @@ TenthFrame.prototype.knockDown = function(score) {
 };
 
 TenthFrame.prototype.isFrameOver = function() {
-  if ((KNOW_FRAME_OUTCOME.isStrike(this.scoreRecord) || KNOW_FRAME_OUTCOME.isSpare(this.scoreRecord)) && this.rollCount > 0) {
+  if ((isStrike(this.scoreRecord) || isSpare(this.scoreRecord)) && this.rollCount > 0) {
     return false;
   };
   return true;
-};
-
-TenthFrame.prototype.isStrike = function(scoreRecord) {
-  if (scoreRecord[0] === 10) {
-   return true }
-  else {
-    return false }
-};
-
-TenthFrame.prototype.isSpare = function(scoreRecord) {
-  if ((scoreRecord[0] + scoreRecord[1]) === 10) {
-   return true }
-  else {
-    return false }
 };
