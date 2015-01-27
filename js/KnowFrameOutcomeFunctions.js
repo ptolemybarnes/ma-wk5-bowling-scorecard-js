@@ -6,7 +6,7 @@ var isSpare = function(scoreRecord) {
     }
 
 var isStrike = function(scoreRecord) {
-      if (scoreRecord[0] === 10) {
+      if (scoreRecord[0] === 10 && scoreRecord.length === 1) {
        return true }
       else {
         return false }
