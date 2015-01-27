@@ -15,5 +15,12 @@ describe('Scorecard', function() {
 
       expect(scorecard.isGameOver()).toBe(true);
     })
+
+    it('the cumulative score after each frame', function() {
+      scorecard.receivePlayerScore(10);
+      scorecard.receivePlayerScore(5);
+
+      expect(scorecard.info.playerScoreRecord).toEqual([10, 5]);
+    });
   });
 });

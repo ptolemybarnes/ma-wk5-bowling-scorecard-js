@@ -1,5 +1,3 @@
-
-
 var FrameOutcome = function(score) {
   this.scoreRecord = score;
 };
